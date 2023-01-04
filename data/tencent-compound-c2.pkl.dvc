@@ -1,0 +1,4 @@
+outs:
+- md5: 2cb9a34688f8f71a16f08a15a8f8f995
+  size: 68883800
+  path: tencent-compound-c2.pkl

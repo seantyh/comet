@@ -1,0 +1,4 @@
+outs:
+- md5: f6c427fa6b3ea9686a4557a00cab973a
+  size: 5207814
+  path: tencent_vocab_nn_compounds_small.txt

@@ -1,0 +1,4 @@
+outs:
+- md5: 7f9590b2c84b27029c8adda2d4602691
+  size: 175205224
+  path: tencent_nn_embeddings-s.txt.gz

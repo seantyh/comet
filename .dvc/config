@@ -1,0 +1,4 @@
+[core]
+    autostage = true
+['remote "gcloud"']
+    url = gs://seantyh-dvc/comet
