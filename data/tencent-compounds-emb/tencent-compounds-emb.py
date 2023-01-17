@@ -1,17 +1,28 @@
 from pathlib import Path
 import pickle
 import datasets
+import numpy as np
 
+_DESCRIPTION = "Tencent Chinese NN compounds embedding dataset - {name}"
+_VERSION = datasets.Version("0.1.0")
 
-_DESCRIPTION = "Tencent Chinese NN compounds embedding dataset"
-
-
-class TencentC4(datasets.GeneratorBasedBuilder): #type: ignore
+class TencentCompound(datasets.GeneratorBasedBuilder): #type: ignore
     """Tencent C4 dataset."""
 
+    BUILDER_CONFIG = [
+        datasets.BuilderConfig(  #type: ignore
+            name="tencent-c4", version=_VERSION, 
+            description="Tencent Compound C4 dataset"),
+        datasets.BuilderConfig(  #type: ignore
+            name="tencent-c2", version=_VERSION,
+            description="Tencent Compound C2 dataset")
+    ]
+
+    DEFAULT_CONFIG_NAME="tencent-c4"
+    
     def _info(self):
         return datasets.DatasetInfo(  #type: ignore
-            description=_DESCRIPTION,
+            description=_DESCRIPTION.format(name=self.config.name),
             features=datasets.Features(
                 {
                     "compound": datasets.Sequence(datasets.Value("float32")),
@@ -26,7 +37,12 @@ class TencentC4(datasets.GeneratorBasedBuilder): #type: ignore
 
     def _split_generators(self, dl_manager):
         """Returns SplitGenerators."""
-        data_file = dl_manager.download("../tencent-compound-c2.pkl")
+        if self.config.name == "tencent-c4":
+            data_file = dl_manager.download("../tencent-compound-c4.pkl")
+        elif self.config.name == "tencent-c2":
+            data_file = dl_manager.download("../tencent-compound-c2.pkl")
+        else:
+            raise ValueError("Unknown dataset name: {}".format(self.config.name))
         
         data = pickle.loads(Path(data_file).read_bytes()) #type: ignore
 
