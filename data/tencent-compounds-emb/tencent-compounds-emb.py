@@ -38,9 +38,9 @@ class TencentCompound(datasets.GeneratorBasedBuilder): #type: ignore
     def _split_generators(self, dl_manager):
         """Returns SplitGenerators."""
         if self.config.name == "tencent-c4":
-            data_file = dl_manager.download("../tencent-compound-c4.pkl")
+            data_file = dl_manager.download("tencent-compound-c4.pkl")
         elif self.config.name == "tencent-c2":
-            data_file = dl_manager.download("../tencent-compound-c2.pkl")
+            data_file = dl_manager.download("tencent-compound-c2.pkl")
         else:
             raise ValueError("Unknown dataset name: {}".format(self.config.name))
         

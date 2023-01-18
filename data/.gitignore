@@ -2,3 +2,4 @@
 /tencent-compound-c4.pkl
 /tencent_nn_embeddings-s.txt.gz
 /tencent_vocab_nn_compounds_small.txt
+/tencent-compounds-emb/*.pkl
